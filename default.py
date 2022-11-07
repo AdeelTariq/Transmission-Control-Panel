@@ -5,10 +5,10 @@ import sys
 
 if __name__ == '__main__':
 
-    torrent = sys.argv[1]
-    dir = sys.argv[2]
-    paused = sys.argv[3]
+    torrent = sys.argv[1] if len(sys.argv) > 1 else None
     if (torrent):
+        dir = sys.argv[2] if len(sys.argv) > 2 else None
+        paused = sys.argv[3] if len(sys.argv) > 3 else None
         transmission = common.get_rpc_client()
 
         transmission.add_torrent(torrent, download_dir=dir, paused=paused == 'True')
